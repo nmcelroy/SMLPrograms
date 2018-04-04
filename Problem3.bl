@@ -1,0 +1,14 @@
+fun checkDuplicates [] = []
+  | checkDuplicates (x::xs) =
+      let fun remove (x,[]) = []
+            | remove (x,y::ys) = if x = y
+                                 then remove(x,ys)
+                                 else y::remove(x,ys)
+      in
+            x::checkDuplicates(remove(x,xs))
+      end
+                       
+fun union ([],[]) = []
+    | union([],ys) = ys
+    | union(xs,[]) = xs
+    | union(x::xs,y::ys) = checkDuplicates((x::xs) @ (y::ys));
