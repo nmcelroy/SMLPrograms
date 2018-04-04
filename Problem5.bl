@@ -1,0 +1,7 @@
+fun myCartesian(xs, ys) =
+    let fun first(x,[]) = []
+    |       first(x, y::ys) = (x,y)::first(x,ys)
+        fun second([], ys) = []
+    |       second(x::xs, ys) = first(x, ys) @ second(xs,ys)
+    in      second(xs,ys) 
+    end;
