@@ -1,4 +1,4 @@
-fun myCartesian(xs, ys) =
+fun crossProduct(xs, ys) =
     let fun first(x,[]) = []
     |       first(x, y::ys) = (x,y)::first(x,ys)
         fun second([], ys) = []

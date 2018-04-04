@@ -10,9 +10,9 @@ fun intersect([],[]) = []
 fun iterate f a [] = a
   | iterate f a (h::t) = f(h, (iterate f a t));
 
-fun combine([]) = []
-    | combine(x::[]) = x 
-    | combine(x::xl) = iterate intersect (x) (xl);
+fun multiSetIntersection([]) = []
+    | multiSetIntersection(x::[]) = x 
+    | multiSetIntersection(x::xl) = iterate intersect (x) (xl);
 
 
 combine([[1,2,3,4,7],[1,2,3,4,7],[1,4,7]]);

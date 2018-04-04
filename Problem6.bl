@@ -1,0 +1,6 @@
+fun insert(x,[]) = []
+     |   insert(x,y::ys) = (x::y)::insert(x,ys);
+
+fun powerset([]) = [[]]
+     |   powerset(x::xs) =
+             powerset(xs)@insert(x,powerset(xs));
