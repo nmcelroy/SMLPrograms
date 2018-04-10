@@ -1,0 +1,5 @@
+fun update(([], (y, fy))) = [(y, fy)]
+    | update((x, fx)::xh, (y, fy)) = 
+                                  if x = y 
+                                  then (y, fy)::xh
+                                  else (x, fx)::update(xh, (y, fy));
