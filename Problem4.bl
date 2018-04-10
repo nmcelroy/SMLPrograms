@@ -1,18 +1,17 @@
-fun member(x,[]) = false
-    |   member(x,y::yl) =
-            if x=y then true
-            else member(x,yl);       
+fun check(x,[]) = false
+    |   check(x,y::yl) =
+                      if x=y then true
+                      else check(x,yl);       
 
 fun intersect([],[]) = []
-    | intersect(x::xl,[]) = []
-    | intersect(x::xl,y::yl) = if member(y, x::xl) then y::intersect(x::xl, yl)
-                              else intersect(x::xl, yl);
-fun iterate f a [] = a
-  | iterate f a (h::t) = f(h, (iterate f a t));
+    | intersect(xs,[]) = []
+    | intersect([],ys) = []
+    | intersect(x::xl,yl) = 
+                         if check(x,yl) 
+                         then x::intersect(xl, yl)
+                         else intersect(xl, yl);
 
 fun multiSetIntersection([]) = []
-    | multiSetIntersection(x::[]) = x 
-    | multiSetIntersection(x::xl) = iterate intersect (x) (xl);
-
-
-combine([[1,2,3,4,7],[1,2,3,4,7],[1,4,7]]);
+    | multiSetIntersection ([xl]) = xl
+    | multiSetIntersection(xl::yl::xs) = 
+                                      multiSetIntersection(intersect(xl,yl)::xs);
